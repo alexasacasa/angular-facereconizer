@@ -8,6 +8,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 export class ImagePreviewComponent implements OnInit, OnChanges {
 
   @Input() file: File;
+  imageSrc: (string | ArrayBuffer);
 
   constructor() { }
 
@@ -16,7 +17,18 @@ export class ImagePreviewComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+    if (changes.file.currentValue) {
+      this.setImageSrc(changes.file.currentValue);
+    }
+  }
+
+  private setImageSrc(image: File): void {
+    const reader = new FileReader();
+    reader.onload = e => {
+      console.log(reader.result);
+      this.imageSrc = reader.result;
+    };
+    reader.readAsDataURL(image);
   }
 
 }
