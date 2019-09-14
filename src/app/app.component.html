@@ -1,1 +1,9 @@
+<header>
+    <h1>Face Detection</h1>
+    <h4>Upload a photo to detect the faces in it</h4>
+    <p>Angular meetup</p>
+
+</header>
+
 <app-image-files-form (selected)="onSelected($event)"></app-image-files-form>
+<app-image-preview [file]="selectedFile"></app-image-preview>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-faces';
+  selectedFile: File;
 
-  onSelected(event: File) {
-    console.log(event);
+  onSelected(file: File) {
+    console.log(file);
+    this.selectedFile = file;
   }
 }
